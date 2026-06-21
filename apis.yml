@@ -1,0 +1,193 @@
+aid: commercelayer
+url: https://raw.githubusercontent.com/api-evangelist/commercelayer/refs/heads/main/apis.yml
+name: Commerce Layer
+kind: company
+description: Commerce Layer is a headless, composable commerce platform that exposes
+  a JSON:API-compliant REST API for building omnichannel storefronts and order
+  management. The Core API serves SKUs, prices, stock, orders, line items, customers,
+  addresses, shipments, payment methods, markets, and promotions, with OAuth2
+  authentication, market-scoped access tokens, and real-time webhooks.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Commerce
+- Headless
+- Composable
+- eCommerce
+- JSON:API
+- Orders
+created: '2026-06-21'
+modified: '2026-06-21'
+specificationVersion: '0.19'
+apis:
+- aid: commercelayer:skus-prices-stock
+  name: Commerce Layer SKUs, Prices & Stock API
+  tags:
+  - SKUs
+  - Prices
+  - Stock
+  - Inventory
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.commercelayer.io/core/api-reference
+  baseURL: https://yourdomain.commercelayer.io/api
+  properties:
+  - url: https://docs.commercelayer.io/core/api-reference
+    type: Documentation
+  - url: https://docs.commercelayer.io/core/api-reference
+    type: APIReference
+  - url: openapi/commercelayer-openapi.yml
+    type: OpenAPI
+  description: Manage product SKUs and their variations, price lists and prices, and
+    stock items and stock locations as JSON:API resources, with market-scoped reads
+    that filter catalog and inventory by the access token's market.
+- aid: commercelayer:orders-line-items
+  name: Commerce Layer Orders & Line Items API
+  tags:
+  - Orders
+  - Line Items
+  - Cart
+  - Checkout
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.commercelayer.io/core/api-reference
+  baseURL: https://yourdomain.commercelayer.io/api
+  properties:
+  - url: https://docs.commercelayer.io/core/api-reference
+    type: Documentation
+  - url: https://docs.commercelayer.io/core/api-reference
+    type: APIReference
+  - url: openapi/commercelayer-openapi.yml
+    type: OpenAPI
+  description: Create and manage shopping carts and orders, add and update line items,
+    and drive the checkout state machine (pending, placed, approved) through the
+    JSON:API order and line_item resources.
+- aid: commercelayer:customers-addresses
+  name: Commerce Layer Customers & Addresses API
+  tags:
+  - Customers
+  - Addresses
+  - Accounts
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.commercelayer.io/core/api-reference
+  baseURL: https://yourdomain.commercelayer.io/api
+  properties:
+  - url: https://docs.commercelayer.io/core/api-reference
+    type: Documentation
+  - url: https://docs.commercelayer.io/core/api-reference
+    type: APIReference
+  - url: openapi/commercelayer-openapi.yml
+    type: OpenAPI
+  description: Manage customer records, customer addresses, and the address book,
+    including billing and shipping addresses associated with orders and customer
+    accounts.
+- aid: commercelayer:shipments
+  name: Commerce Layer Shipments API
+  tags:
+  - Shipments
+  - Fulfillment
+  - Shipping
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.commercelayer.io/core/api-reference
+  baseURL: https://yourdomain.commercelayer.io/api
+  properties:
+  - url: https://docs.commercelayer.io/core/api-reference
+    type: Documentation
+  - url: https://docs.commercelayer.io/core/api-reference
+    type: APIReference
+  - url: openapi/commercelayer-openapi.yml
+    type: OpenAPI
+  description: Manage order shipments and their fulfillment lifecycle, including
+    shipping methods, stock transfers, and shipment status transitions tied to
+    stock locations.
+- aid: commercelayer:payments
+  name: Commerce Layer Payments API
+  tags:
+  - Payments
+  - Payment Methods
+  - Gateways
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.commercelayer.io/core/api-reference
+  baseURL: https://yourdomain.commercelayer.io/api
+  properties:
+  - url: https://docs.commercelayer.io/core/api-reference
+    type: Documentation
+  - url: https://docs.commercelayer.io/core/api-reference
+    type: APIReference
+  - url: openapi/commercelayer-openapi.yml
+    type: OpenAPI
+  description: Configure payment methods and payment gateways and manage payment
+    sources used to authorize and capture funds against orders across supported
+    PSPs.
+- aid: commercelayer:markets
+  name: Commerce Layer Markets API
+  tags:
+  - Markets
+  - Pricing
+  - Localization
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.commercelayer.io/core/api-reference
+  baseURL: https://yourdomain.commercelayer.io/api
+  properties:
+  - url: https://docs.commercelayer.io/core/api-reference
+    type: Documentation
+  - url: https://docs.commercelayer.io/core/api-reference
+    type: APIReference
+  - url: openapi/commercelayer-openapi.yml
+    type: OpenAPI
+  description: Manage markets that bind a price list, an inventory model, and a
+    merchant to scope catalog, pricing, and inventory for a region, channel, or
+    brand via market-scoped access tokens.
+- aid: commercelayer:promotions
+  name: Commerce Layer Promotions API
+  tags:
+  - Promotions
+  - Discounts
+  - Coupons
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.commercelayer.io/core/api-reference
+  baseURL: https://yourdomain.commercelayer.io/api
+  properties:
+  - url: https://docs.commercelayer.io/core/api-reference
+    type: Documentation
+  - url: https://docs.commercelayer.io/core/api-reference
+    type: APIReference
+  - url: openapi/commercelayer-openapi.yml
+    type: OpenAPI
+  description: Configure promotions such as percentage and fixed-amount discounts,
+    free shipping, free gifts, and buy-X-pay-Y rules, along with coupon codes and
+    promotion rules applied at checkout.
+- aid: commercelayer:webhooks
+  name: Commerce Layer Webhooks API
+  tags:
+  - Webhooks
+  - Events
+  - Callbacks
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.commercelayer.io/core/real-time-webhooks
+  baseURL: https://yourdomain.commercelayer.io/api
+  properties:
+  - url: https://docs.commercelayer.io/core/real-time-webhooks
+    type: Documentation
+  - url: https://docs.commercelayer.io/core/api-reference/webhooks
+    type: APIReference
+  - url: openapi/commercelayer-openapi.yml
+    type: OpenAPI
+  description: Subscribe to event topics (e.g. orders.place, orders.approve) and
+    receive signed POST callbacks to a callback_url, with a per-webhook circuit
+    breaker (circuit_state) that opens after repeated delivery failures.
+common:
+- type: GitHubOrganization
+  url: https://github.com/commercelayer
+- type: LinkedIn
+  url: https://www.linkedin.com/company/commerce-layer
+- type: Website
+  url: https://commercelayer.io
+- type: Documentation
+  url: https://docs.commercelayer.io
+- type: Plans
+  url: plans/commercelayer-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/commercelayer-rate-limits.yml
+- type: FinOps
+  url: finops/commercelayer-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

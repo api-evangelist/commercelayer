@@ -1,0 +1,102 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Commerce Layer
+providerId: commercelayer
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Commerce
+- Headless
+- Composable
+- eCommerce
+- JSON:API
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Commerce Layer spend. Commerce Layer offers a free Developer
+  plan (capped organizations, users, markets, SKUs, links, and 100 live orders
+  per month) and a custom-priced Enterprise plan. The primary cost drivers are
+  live order volume and plan tier, plus optional add-on services (distributed
+  OMS, promotion engine, metrics dashboard). Payment gateway / PSP fees are
+  billed by the payment providers, not by Commerce Layer.
+notes: >-
+  Commerce Layer does not publish per-order or intermediate-tier pricing;
+  Enterprise pricing and add-on costs are negotiated. Verify the billing model
+  against the pricing page during reconciliation.
+sources:
+- https://commercelayer.io/pricing
+- https://docs.commercelayer.io
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Commerce Layer
+serviceCategory: Commerce Platform
+billingModel:
+  pricingCategory: Subscription
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+  - Usage
+  - Purchase
+  - Adjustment
+focusColumns:
+  ServiceName: Commerce Layer Core API
+  ServiceCategory: Commerce Platform
+  ProviderName: Commerce Layer
+  PublisherName: Commerce Layer
+  InvoiceIssuerName: Commerce Layer
+  BillingCurrency: USD
+  ChargeCategory: Usage
+  PricingCategory: Subscription
+meters:
+- name: live_orders
+  description: Live orders placed per month; the Developer plan includes 100 free live orders/month.
+  unit: orders
+  aggregation: sum
+  dimensions:
+  - organization
+  - market
+- name: skus
+  description: Number of SKUs in the catalog, capped on the Developer plan (1,000) and unlimited on Enterprise.
+  unit: skus
+  aggregation: max
+  dimensions:
+  - organization
+- name: markets
+  description: Number of active markets, capped on the Developer plan (2) and unlimited on Enterprise.
+  unit: markets
+  aggregation: max
+  dimensions:
+  - organization
+- name: users
+  description: Number of seats/users on the organization.
+  unit: users
+  aggregation: max
+  dimensions:
+  - organization
+- name: add_on_services
+  description: Optional add-ons (distributed OMS, promotion engine, metrics dashboard) billed separately.
+  unit: services
+  aggregation: sum
+  dimensions:
+  - organization
+  - service
+principles:
+- name: Visibility
+  description: Track live order volume against the plan allowance and monitor SKU, market, and user counts approaching plan caps.
+- name: Allocation
+  description: Map markets and organizations to business units, brands, or regions for cost attribution.
+- name: Optimization
+  description: Use test orders (free, unlimited) for development; only add paid add-ons when the business case is clear; right-size the plan to actual order volume.
+- name: Accountability
+  description: Assign owners per organization/market and review order volume and plan utilization against budget.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

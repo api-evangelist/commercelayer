@@ -1,0 +1,84 @@
+aid: commercelayer
+name: Commerce Layer
+review:
+  question: Does Commerce Layer expose a documented public WebSocket API?
+  answer: false
+  date: '2026-06-21'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    Per API Evangelist scope, HTTP Server-Sent Events (SSE) and event-driven
+    callbacks may be in-scope for AsyncAPI modeling. Commerce Layer's
+    event surface is delivered as outbound real-time webhooks (HTTP POST
+    callbacks to a subscriber-supplied callback_url), not as a streaming
+    transport. No AsyncAPI document was authored at this time; the webhook
+    callback contract is described in the OpenAPI document and the Webhooks
+    API entry instead.
+findings:
+  summary: |
+    Commerce Layer does not publish a documented public WebSocket API. The
+    Core API is a JSON:API-compliant REST API served under the organization
+    subdomain at https://{organization}.commercelayer.io/api using the
+    application/vnd.api+json content type, authenticated with OAuth2 Bearer
+    access tokens issued by https://auth.commercelayer.io/oauth/token. The
+    only asynchronous, event-driven surface is real-time webhooks: Commerce
+    Layer sends outbound HTTP POST callbacks to a configured callback_url
+    when a subscribed event topic (e.g. orders.place) fires, with the topic
+    in the X-CommerceLayer-Topic header and a per-webhook circuit breaker
+    (circuit_state). No realtime, bidirectional WebSocket (ws:// or wss://)
+    endpoint is documented.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://{organization}.commercelayer.io/api
+      documented: true
+    - protocol: Webhook
+      scheme: https
+      note: Outbound HTTP POST callbacks to a subscriber callback_url on subscribed event topics. Not WebSocket.
+      documented: true
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented in Commerce Layer's API reference or developer documentation as of the review date.
+  endpointsConfirmedRest:
+    - GET    https://{organization}.commercelayer.io/api/skus
+    - POST   https://{organization}.commercelayer.io/api/skus
+    - GET    https://{organization}.commercelayer.io/api/skus/{id}
+    - PATCH  https://{organization}.commercelayer.io/api/skus/{id}
+    - DELETE https://{organization}.commercelayer.io/api/skus/{id}
+    - GET    https://{organization}.commercelayer.io/api/prices
+    - GET    https://{organization}.commercelayer.io/api/stock_items
+    - GET    https://{organization}.commercelayer.io/api/orders
+    - POST   https://{organization}.commercelayer.io/api/orders
+    - PATCH  https://{organization}.commercelayer.io/api/orders/{id}
+    - GET    https://{organization}.commercelayer.io/api/line_items
+    - GET    https://{organization}.commercelayer.io/api/customers
+    - GET    https://{organization}.commercelayer.io/api/addresses
+    - GET    https://{organization}.commercelayer.io/api/shipments
+    - GET    https://{organization}.commercelayer.io/api/payment_methods
+    - GET    https://{organization}.commercelayer.io/api/markets
+    - GET    https://{organization}.commercelayer.io/api/promotions
+    - GET    https://{organization}.commercelayer.io/api/webhooks
+    - POST   https://{organization}.commercelayer.io/api/webhooks
+    - POST   https://auth.commercelayer.io/oauth/token
+sources:
+  - url: https://docs.commercelayer.io/core/api-specification
+    type: Documentation
+    note: States the API is 100% JSON:API v1.0 compliant; base endpoint is the organization subdomain. No WebSocket mentioned.
+  - url: https://docs.commercelayer.io/core/authentication
+    type: Documentation
+    note: OAuth2 token endpoint https://auth.commercelayer.io/oauth/token; Bearer tokens with optional market/stock_location scopes.
+  - url: https://docs.commercelayer.io/core/api-reference
+    type: APIReference
+    note: All documented resources are HTTPS REST (JSON:API). 400+ endpoints across the resource catalog.
+  - url: https://docs.commercelayer.io/core/real-time-webhooks
+    type: Documentation
+    note: Event delivery is via outbound HTTP POST callbacks (webhooks), not WebSocket.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket protocol surface exists. The asynchronous event surface is
+    outbound real-time webhooks (HTTP callbacks), which is documented in the
+    apis.yml Webhooks API entry and the OpenAPI document rather than via an
+    AsyncAPI streaming document.

@@ -1,0 +1,327 @@
+{
+  "info": {
+    "name": "Commerce Layer Core API",
+    "description": "JSON:API-compliant REST collection for the Commerce Layer Core API. Set baseUrl to https://{organization}.commercelayer.io/api and bearerToken to an OAuth2 access token obtained from https://auth.commercelayer.io/oauth/token.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://yourdomain.commercelayer.io/api"
+    },
+    {
+      "key": "bearerToken",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "SKUs, Prices & Stock",
+      "item": [
+        {
+          "name": "List all SKUs",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/vnd.api+json" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/skus",
+              "host": ["{{baseUrl}}"],
+              "path": ["skus"]
+            }
+          }
+        },
+        {
+          "name": "Create a SKU",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/vnd.api+json" },
+              { "key": "Accept", "value": "application/vnd.api+json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"type\": \"skus\",\n    \"attributes\": {\n      \"code\": \"\",\n      \"name\": \"\"\n    }\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/skus",
+              "host": ["{{baseUrl}}"],
+              "path": ["skus"]
+            }
+          }
+        },
+        {
+          "name": "Retrieve a SKU",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/vnd.api+json" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/skus/{{skuId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["skus", "{{skuId}}"]
+            }
+          }
+        },
+        {
+          "name": "List all prices",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/vnd.api+json" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/prices",
+              "host": ["{{baseUrl}}"],
+              "path": ["prices"]
+            }
+          }
+        },
+        {
+          "name": "List all stock items",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/vnd.api+json" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/stock_items",
+              "host": ["{{baseUrl}}"],
+              "path": ["stock_items"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Orders & Line Items",
+      "item": [
+        {
+          "name": "List all orders",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/vnd.api+json" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/orders",
+              "host": ["{{baseUrl}}"],
+              "path": ["orders"]
+            }
+          }
+        },
+        {
+          "name": "Create an order",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/vnd.api+json" },
+              { "key": "Accept", "value": "application/vnd.api+json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"type\": \"orders\",\n    \"attributes\": {}\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/orders",
+              "host": ["{{baseUrl}}"],
+              "path": ["orders"]
+            }
+          }
+        },
+        {
+          "name": "Place an order",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Content-Type", "value": "application/vnd.api+json" },
+              { "key": "Accept", "value": "application/vnd.api+json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"type\": \"orders\",\n    \"id\": \"{{orderId}}\",\n    \"attributes\": {\n      \"_place\": true\n    }\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/orders/{{orderId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["orders", "{{orderId}}"]
+            }
+          }
+        },
+        {
+          "name": "List all line items",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/vnd.api+json" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/line_items",
+              "host": ["{{baseUrl}}"],
+              "path": ["line_items"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Customers & Addresses",
+      "item": [
+        {
+          "name": "List all customers",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/vnd.api+json" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/customers",
+              "host": ["{{baseUrl}}"],
+              "path": ["customers"]
+            }
+          }
+        },
+        {
+          "name": "List all addresses",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/vnd.api+json" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/addresses",
+              "host": ["{{baseUrl}}"],
+              "path": ["addresses"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Shipments",
+      "item": [
+        {
+          "name": "List all shipments",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/vnd.api+json" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/shipments",
+              "host": ["{{baseUrl}}"],
+              "path": ["shipments"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Payments",
+      "item": [
+        {
+          "name": "List all payment methods",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/vnd.api+json" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/payment_methods",
+              "host": ["{{baseUrl}}"],
+              "path": ["payment_methods"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Markets",
+      "item": [
+        {
+          "name": "List all markets",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/vnd.api+json" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/markets",
+              "host": ["{{baseUrl}}"],
+              "path": ["markets"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Promotions",
+      "item": [
+        {
+          "name": "List all promotions",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/vnd.api+json" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/promotions",
+              "host": ["{{baseUrl}}"],
+              "path": ["promotions"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Webhooks",
+      "item": [
+        {
+          "name": "List all webhooks",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/vnd.api+json" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/webhooks",
+              "host": ["{{baseUrl}}"],
+              "path": ["webhooks"]
+            }
+          }
+        },
+        {
+          "name": "Create a webhook",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/vnd.api+json" },
+              { "key": "Accept", "value": "application/vnd.api+json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"type\": \"webhooks\",\n    \"attributes\": {\n      \"topic\": \"orders.place\",\n      \"callback_url\": \"\"\n    }\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/webhooks",
+              "host": ["{{baseUrl}}"],
+              "path": ["webhooks"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

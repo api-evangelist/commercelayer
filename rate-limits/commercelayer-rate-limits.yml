@@ -1,0 +1,58 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Commerce Layer
+providerId: commercelayer
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Commerce
+- Headless
+- Composable
+- eCommerce
+- JSON:API
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  The Commerce Layer Core API enforces per-organization rate limits on API
+  requests over a sliding time window, returning HTTP 429 when the limit is
+  exceeded. Limits differ between read and write operations and between the
+  test and live environments, and the response carries headers describing the
+  current limit, remaining requests, and reset time. Specific per-window
+  request counts are not reconciled in this artifact and should be confirmed
+  against the provider documentation and live response headers.
+notes: >-
+  Confirm exact request-per-window values, header names, and any plan-based
+  differences in the Commerce Layer documentation on reconciliation. Values may
+  vary by environment (test vs live) and by plan.
+sources:
+- https://docs.commercelayer.io/core/api-specification
+- https://docs.commercelayer.io
+responseCodes:
+  throttled: 429
+limits:
+- name: API Requests
+  scope: organization
+  metric: requests
+  limit: see provider documentation
+  notes: Per-organization request limit over a sliding window; HTTP 429 on exceed.
+- name: Read Requests
+  scope: organization
+  metric: requests
+  limit: see provider documentation
+  notes: GET / read operations may have a higher allowance than writes.
+- name: Write Requests
+  scope: organization
+  metric: requests
+  limit: see provider documentation
+  notes: POST / PATCH / DELETE operations may have a lower allowance than reads.
+policies:
+- name: Environment Differences
+  description: Test and live organizations may have different limits.
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter and honor rate-limit reset headers before retrying.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

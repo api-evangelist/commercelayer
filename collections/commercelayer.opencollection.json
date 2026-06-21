@@ -1,0 +1,282 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Commerce Layer Core API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SKUs, Prices & Stock",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all SKUs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://yourdomain.commercelayer.io/api/skus"
+          },
+          "docs": "List all SKUs as JSON:API resources."
+        },
+        {
+          "info": {
+            "name": "Create a SKU",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://yourdomain.commercelayer.io/api/skus",
+            "body": {
+              "type": "json",
+              "data": "{\"data\":{\"type\":\"skus\",\"attributes\":{\"code\":\"\",\"name\":\"\"}}}"
+            }
+          },
+          "docs": "Create a SKU."
+        },
+        {
+          "info": {
+            "name": "Retrieve a SKU",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://yourdomain.commercelayer.io/api/skus/{{skuId}}"
+          },
+          "docs": "Retrieve a single SKU by id."
+        },
+        {
+          "info": {
+            "name": "List all prices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://yourdomain.commercelayer.io/api/prices"
+          },
+          "docs": "List all prices."
+        },
+        {
+          "info": {
+            "name": "List all stock items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://yourdomain.commercelayer.io/api/stock_items"
+          },
+          "docs": "List all stock items."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Orders & Line Items",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://yourdomain.commercelayer.io/api/orders"
+          },
+          "docs": "List all orders."
+        },
+        {
+          "info": {
+            "name": "Create an order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://yourdomain.commercelayer.io/api/orders",
+            "body": {
+              "type": "json",
+              "data": "{\"data\":{\"type\":\"orders\",\"attributes\":{}}}"
+            }
+          },
+          "docs": "Create an order (cart)."
+        },
+        {
+          "info": {
+            "name": "Place an order",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://yourdomain.commercelayer.io/api/orders/{{orderId}}",
+            "body": {
+              "type": "json",
+              "data": "{\"data\":{\"type\":\"orders\",\"id\":\"{{orderId}}\",\"attributes\":{\"_place\":true}}}"
+            }
+          },
+          "docs": "Place an order using the _place trigger attribute."
+        },
+        {
+          "info": {
+            "name": "List all line items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://yourdomain.commercelayer.io/api/line_items"
+          },
+          "docs": "List all line items."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Customers & Addresses",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all customers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://yourdomain.commercelayer.io/api/customers"
+          },
+          "docs": "List all customers."
+        },
+        {
+          "info": {
+            "name": "List all addresses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://yourdomain.commercelayer.io/api/addresses"
+          },
+          "docs": "List all addresses."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Shipments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all shipments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://yourdomain.commercelayer.io/api/shipments"
+          },
+          "docs": "List all shipments."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Payments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all payment methods",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://yourdomain.commercelayer.io/api/payment_methods"
+          },
+          "docs": "List all payment methods."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Markets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all markets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://yourdomain.commercelayer.io/api/markets"
+          },
+          "docs": "List all markets."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Promotions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all promotions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://yourdomain.commercelayer.io/api/promotions"
+          },
+          "docs": "List all promotions."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all webhooks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://yourdomain.commercelayer.io/api/webhooks"
+          },
+          "docs": "List all webhooks."
+        },
+        {
+          "info": {
+            "name": "Create a webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://yourdomain.commercelayer.io/api/webhooks",
+            "body": {
+              "type": "json",
+              "data": "{\"data\":{\"type\":\"webhooks\",\"attributes\":{\"topic\":\"orders.place\",\"callback_url\":\"\"}}}"
+            }
+          },
+          "docs": "Subscribe to an event topic with a callback_url."
+        }
+      ]
+    }
+  ]
+}

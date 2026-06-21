@@ -1,0 +1,163 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Commerce Layer
+providerId: commercelayer
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Commerce
+- Headless
+- Composable
+- eCommerce
+- JSON:API
+- Orders
+- Plans
+description: >-
+  Commerce Layer publishes two named plans on its pricing page: a free
+  Developer plan with capped organizations, users, markets, SKUs, links, and
+  live orders per month (unlimited test orders), and a custom-priced
+  Enterprise plan with unlimited resources plus access to the Metrics and
+  Provisioning APIs, custom roles, custom identity providers, and SLAs.
+  Add-on services (distributed OMS, promotion engine, metrics dashboard) are
+  available for additional cost. Per-order and intermediate-tier pricing is
+  not published; contact sales.
+notes: >-
+  Quotas and add-ons are subject to change; verify against the Commerce Layer
+  pricing page during reconciliation. Payment gateway / PSP fees are billed by
+  the payment providers, not by Commerce Layer.
+sources:
+- https://commercelayer.io/pricing
+- https://docs.commercelayer.io
+plans:
+- id: commercelayer-developer
+  name: Developer
+  type: free
+  description: >-
+    Free plan for building and testing with Core API access and community
+    support.
+  entries:
+  - label: Organizations
+    name: organizations
+    type: flat
+    metric: organizations
+    limit: 1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: free
+    userMultiplied: false
+  - label: Users
+    name: users
+    type: flat
+    metric: users
+    limit: 2
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: free
+    userMultiplied: false
+  - label: Markets
+    name: markets
+    type: flat
+    metric: markets
+    limit: 2
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: free
+    userMultiplied: false
+  - label: SKUs
+    name: skus
+    type: flat
+    metric: skus
+    limit: 1000
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: free
+    userMultiplied: false
+  - label: Links
+    name: links
+    type: flat
+    metric: links
+    limit: 10
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: free
+    userMultiplied: false
+  - label: Live Orders
+    name: live_orders
+    type: usage
+    metric: orders
+    limit: 100
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: free up to 100 live orders/month
+    userMultiplied: false
+  - label: Test Orders
+    name: test_orders
+    type: usage
+    metric: orders
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: free (unlimited)
+    userMultiplied: false
+  elements:
+  - name: Core API access
+  - name: Community support
+- id: commercelayer-enterprise
+  name: Enterprise
+  type: enterprise
+  description: >-
+    Custom-priced plan with unlimited organizations, users, markets, SKUs, and
+    links, negotiated order volumes, additional API surfaces, and enterprise
+    support and SLAs. Contact Commerce Layer sales.
+  entries:
+  - label: Enterprise Agreement
+    name: enterprise
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Unlimited organizations, users, markets, SKUs, and links
+  - name: Custom orders per year
+  - name: Core API access
+  - name: Metrics API access
+  - name: Provisioning API access
+  - name: Custom user roles
+  - name: Custom identity provider
+  - name: Dedicated support and enterprise SLAs
+- id: commercelayer-add-ons
+  name: Add-On Services
+  type: usage
+  description: >-
+    Optional services available for additional cost on top of a plan.
+  entries:
+  - label: Add-On Services
+    name: add_ons
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Distributed OMS
+  - name: Promotion engine
+  - name: Metrics dashboard
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
