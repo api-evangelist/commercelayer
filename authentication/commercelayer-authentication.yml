@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/commercelayer-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: 'OAuth2 access token obtained from https://auth.commercelayer.io/oauth/token
+    (client_credentials, password, authorization_code, refresh_token, or JWT bearer grant).
+    Passed as Authorization: Bearer {access_token}. Tokens may carry a market or stock_location
+    scope.'
+  sources:
+  - openapi/commercelayer-openapi.yml
