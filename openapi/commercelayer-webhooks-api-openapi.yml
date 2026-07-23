@@ -1,0 +1,172 @@
+openapi: 3.0.1
+info:
+  title: Commerce Layer Core Addresses Webhooks API
+  description: Commerce Layer is a headless, composable commerce platform. The Core API is 100% compliant with the JSON:API specification (v1.0) and supports compound documents, sparse fieldsets, resource linking, filtering, sorting, and pagination. All requests are authenticated with an OAuth2 Bearer access token obtained from https://auth.commercelayer.io/oauth/token, and access tokens may be scoped to a market or stock location. Resources are served under the organization subdomain at https://{organization}.commercelayer.io/api using the application/vnd.api+json content type.
+  termsOfService: https://commercelayer.io/legal/terms-of-service
+  contact:
+    name: Commerce Layer Support
+    url: https://commercelayer.io/contact
+  version: '4.0'
+servers:
+- url: https://{organization}.commercelayer.io/api
+  description: Organization-scoped Core API endpoint
+  variables:
+    organization:
+      default: yourdomain
+      description: Your Commerce Layer organization subdomain (slug).
+security:
+- bearerAuth: []
+tags:
+- name: Webhooks
+  description: Event subscriptions delivering signed callbacks.
+paths:
+  /webhooks:
+    get:
+      operationId: listWebhooks
+      tags:
+      - Webhooks
+      summary: List all webhooks
+      responses:
+        '200':
+          description: A list of webhook resources.
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/ResourceList'
+    post:
+      operationId: createWebhook
+      tags:
+      - Webhooks
+      summary: Create a webhook
+      description: Subscribe to an event topic. Each time the subscribed event occurs, Commerce Layer triggers a POST request to the callback_url; the topic is sent in the X-CommerceLayer-Topic header.
+      requestBody:
+        required: true
+        content:
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/WebhookData'
+      responses:
+        '201':
+          description: The created webhook resource.
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/WebhookData'
+  /webhooks/{webhookId}:
+    parameters:
+    - $ref: '#/components/parameters/ResourceId'
+    get:
+      operationId: getWebhook
+      tags:
+      - Webhooks
+      summary: Retrieve a webhook
+      responses:
+        '200':
+          description: The requested webhook resource.
+    patch:
+      operationId: updateWebhook
+      tags:
+      - Webhooks
+      summary: Update a webhook
+      responses:
+        '200':
+          description: The updated webhook resource.
+    delete:
+      operationId: deleteWebhook
+      tags:
+      - Webhooks
+      summary: Delete a webhook
+      responses:
+        '204':
+          description: The webhook was deleted.
+components:
+  schemas:
+    ResourceList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Resource'
+        meta:
+          $ref: '#/components/schemas/Meta'
+        links:
+          type: object
+    WebhookData:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Webhook'
+    Webhook:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum:
+          - webhooks
+        attributes:
+          type: object
+          properties:
+            name:
+              type: string
+            topic:
+              type: string
+              description: The event topic, e.g. orders.place or orders.approve.
+            callback_url:
+              type: string
+              description: The endpoint that receives the POST callback.
+            include_resources:
+              type: array
+              items:
+                type: string
+            circuit_state:
+              type: string
+              enum:
+              - closed
+              - open
+              description: Circuit breaker state; opens after repeated delivery failures.
+            circuit_failure_count:
+              type: integer
+            shared_secret:
+              type: string
+              description: Secret used to sign callback payloads.
+            metadata:
+              type: object
+        relationships:
+          type: object
+    Resource:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        attributes:
+          type: object
+        relationships:
+          type: object
+        links:
+          type: object
+    Meta:
+      type: object
+      properties:
+        record_count:
+          type: integer
+        page_count:
+          type: integer
+  parameters:
+    ResourceId:
+      name: id
+      in: path
+      required: true
+      description: The resource unique identifier.
+      schema:
+        type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'OAuth2 access token obtained from https://auth.commercelayer.io/oauth/token (client_credentials, password, authorization_code, refresh_token, or JWT bearer grant). Passed as Authorization: Bearer {access_token}. Tokens may carry a market or stock_location scope.'

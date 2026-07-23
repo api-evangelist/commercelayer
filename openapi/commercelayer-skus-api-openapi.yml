@@ -1,0 +1,283 @@
+openapi: 3.0.1
+info:
+  title: Commerce Layer Core Addresses SKUs API
+  description: Commerce Layer is a headless, composable commerce platform. The Core API is 100% compliant with the JSON:API specification (v1.0) and supports compound documents, sparse fieldsets, resource linking, filtering, sorting, and pagination. All requests are authenticated with an OAuth2 Bearer access token obtained from https://auth.commercelayer.io/oauth/token, and access tokens may be scoped to a market or stock location. Resources are served under the organization subdomain at https://{organization}.commercelayer.io/api using the application/vnd.api+json content type.
+  termsOfService: https://commercelayer.io/legal/terms-of-service
+  contact:
+    name: Commerce Layer Support
+    url: https://commercelayer.io/contact
+  version: '4.0'
+servers:
+- url: https://{organization}.commercelayer.io/api
+  description: Organization-scoped Core API endpoint
+  variables:
+    organization:
+      default: yourdomain
+      description: Your Commerce Layer organization subdomain (slug).
+security:
+- bearerAuth: []
+tags:
+- name: SKUs
+  description: Stock keeping units describing the product variations being sold.
+paths:
+  /skus:
+    get:
+      operationId: listSkus
+      tags:
+      - SKUs
+      summary: List all SKUs
+      parameters:
+      - $ref: '#/components/parameters/PageNumber'
+      - $ref: '#/components/parameters/PageSize'
+      - $ref: '#/components/parameters/Sort'
+      - $ref: '#/components/parameters/Include'
+      responses:
+        '200':
+          description: A list of SKU resources.
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/SkuList'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+    post:
+      operationId: createSku
+      tags:
+      - SKUs
+      summary: Create a SKU
+      requestBody:
+        required: true
+        content:
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/SkuData'
+      responses:
+        '201':
+          description: The created SKU resource.
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/SkuData'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+  /skus/{skuId}:
+    parameters:
+    - $ref: '#/components/parameters/ResourceId'
+    get:
+      operationId: getSku
+      tags:
+      - SKUs
+      summary: Retrieve a SKU
+      responses:
+        '200':
+          description: The requested SKU resource.
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/SkuData'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateSku
+      tags:
+      - SKUs
+      summary: Update a SKU
+      requestBody:
+        required: true
+        content:
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/SkuData'
+      responses:
+        '200':
+          description: The updated SKU resource.
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/SkuData'
+    delete:
+      operationId: deleteSku
+      tags:
+      - SKUs
+      summary: Delete a SKU
+      responses:
+        '204':
+          description: The SKU was deleted.
+components:
+  schemas:
+    ResourceList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Resource'
+        meta:
+          $ref: '#/components/schemas/Meta'
+        links:
+          type: object
+    Resource:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        attributes:
+          type: object
+        relationships:
+          type: object
+        links:
+          type: object
+    Sku:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum:
+          - skus
+        attributes:
+          type: object
+          properties:
+            code:
+              type: string
+              description: A unique SKU code (EAN, UPC, or any custom code).
+            name:
+              type: string
+            description:
+              type: string
+            image_url:
+              type: string
+            pieces_per_pack:
+              type: integer
+            weight:
+              type: number
+            unit_of_weight:
+              type: string
+              enum:
+              - gr
+              - oz
+              - lb
+            hs_tariff_number:
+              type: string
+            do_not_ship:
+              type: boolean
+            do_not_track:
+              type: boolean
+            metadata:
+              type: object
+            created_at:
+              type: string
+              format: date-time
+            updated_at:
+              type: string
+              format: date-time
+        relationships:
+          type: object
+    SkuData:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Sku'
+    SkuList:
+      allOf:
+      - $ref: '#/components/schemas/ResourceList'
+    Meta:
+      type: object
+      properties:
+        record_count:
+          type: integer
+        page_count:
+          type: integer
+    Errors:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              title:
+                type: string
+              detail:
+                type: string
+              code:
+                type: string
+              status:
+                type: string
+  parameters:
+    Include:
+      name: include
+      in: query
+      required: false
+      description: Comma-separated list of relationships to side-load (compound documents).
+      schema:
+        type: string
+    PageNumber:
+      name: page[number]
+      in: query
+      required: false
+      description: The page of results to return (JSON:API pagination).
+      schema:
+        type: integer
+        default: 1
+    Sort:
+      name: sort
+      in: query
+      required: false
+      description: Comma-separated list of fields to sort by; prefix with - for descending.
+      schema:
+        type: string
+    PageSize:
+      name: page[size]
+      in: query
+      required: false
+      description: Number of results per page (max 25, up to 25 by default).
+      schema:
+        type: integer
+        default: 10
+        maximum: 25
+    ResourceId:
+      name: id
+      in: path
+      required: true
+      description: The resource unique identifier.
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Missing or invalid access token.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/Errors'
+    UnprocessableEntity:
+      description: Validation failed.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/Errors'
+    RateLimited:
+      description: Too many requests; the rate limit was exceeded.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/Errors'
+    NotFound:
+      description: The resource was not found.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/Errors'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'OAuth2 access token obtained from https://auth.commercelayer.io/oauth/token (client_credentials, password, authorization_code, refresh_token, or JWT bearer grant). Passed as Authorization: Bearer {access_token}. Tokens may carry a market or stock_location scope.'

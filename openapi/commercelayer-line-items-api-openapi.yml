@@ -1,0 +1,117 @@
+openapi: 3.0.1
+info:
+  title: Commerce Layer Core Addresses Line Items API
+  description: Commerce Layer is a headless, composable commerce platform. The Core API is 100% compliant with the JSON:API specification (v1.0) and supports compound documents, sparse fieldsets, resource linking, filtering, sorting, and pagination. All requests are authenticated with an OAuth2 Bearer access token obtained from https://auth.commercelayer.io/oauth/token, and access tokens may be scoped to a market or stock location. Resources are served under the organization subdomain at https://{organization}.commercelayer.io/api using the application/vnd.api+json content type.
+  termsOfService: https://commercelayer.io/legal/terms-of-service
+  contact:
+    name: Commerce Layer Support
+    url: https://commercelayer.io/contact
+  version: '4.0'
+servers:
+- url: https://{organization}.commercelayer.io/api
+  description: Organization-scoped Core API endpoint
+  variables:
+    organization:
+      default: yourdomain
+      description: Your Commerce Layer organization subdomain (slug).
+security:
+- bearerAuth: []
+tags:
+- name: Line Items
+  description: Line items belonging to an order.
+paths:
+  /line_items:
+    get:
+      operationId: listLineItems
+      tags:
+      - Line Items
+      summary: List all line items
+      responses:
+        '200':
+          description: A list of line item resources.
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/ResourceList'
+    post:
+      operationId: createLineItem
+      tags:
+      - Line Items
+      summary: Create a line item
+      responses:
+        '201':
+          description: The created line item resource.
+  /line_items/{lineItemId}:
+    parameters:
+    - $ref: '#/components/parameters/ResourceId'
+    get:
+      operationId: getLineItem
+      tags:
+      - Line Items
+      summary: Retrieve a line item
+      responses:
+        '200':
+          description: The requested line item resource.
+    patch:
+      operationId: updateLineItem
+      tags:
+      - Line Items
+      summary: Update a line item
+      responses:
+        '200':
+          description: The updated line item resource.
+    delete:
+      operationId: deleteLineItem
+      tags:
+      - Line Items
+      summary: Delete a line item
+      responses:
+        '204':
+          description: The line item was deleted.
+components:
+  schemas:
+    ResourceList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Resource'
+        meta:
+          $ref: '#/components/schemas/Meta'
+        links:
+          type: object
+    Resource:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        attributes:
+          type: object
+        relationships:
+          type: object
+        links:
+          type: object
+    Meta:
+      type: object
+      properties:
+        record_count:
+          type: integer
+        page_count:
+          type: integer
+  parameters:
+    ResourceId:
+      name: id
+      in: path
+      required: true
+      description: The resource unique identifier.
+      schema:
+        type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'OAuth2 access token obtained from https://auth.commercelayer.io/oauth/token (client_credentials, password, authorization_code, refresh_token, or JWT bearer grant). Passed as Authorization: Bearer {access_token}. Tokens may carry a market or stock_location scope.'

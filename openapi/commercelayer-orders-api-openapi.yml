@@ -1,0 +1,203 @@
+openapi: 3.0.1
+info:
+  title: Commerce Layer Core Addresses Orders API
+  description: Commerce Layer is a headless, composable commerce platform. The Core API is 100% compliant with the JSON:API specification (v1.0) and supports compound documents, sparse fieldsets, resource linking, filtering, sorting, and pagination. All requests are authenticated with an OAuth2 Bearer access token obtained from https://auth.commercelayer.io/oauth/token, and access tokens may be scoped to a market or stock location. Resources are served under the organization subdomain at https://{organization}.commercelayer.io/api using the application/vnd.api+json content type.
+  termsOfService: https://commercelayer.io/legal/terms-of-service
+  contact:
+    name: Commerce Layer Support
+    url: https://commercelayer.io/contact
+  version: '4.0'
+servers:
+- url: https://{organization}.commercelayer.io/api
+  description: Organization-scoped Core API endpoint
+  variables:
+    organization:
+      default: yourdomain
+      description: Your Commerce Layer organization subdomain (slug).
+security:
+- bearerAuth: []
+tags:
+- name: Orders
+  description: Shopping carts and orders and their checkout lifecycle.
+paths:
+  /orders:
+    get:
+      operationId: listOrders
+      tags:
+      - Orders
+      summary: List all orders
+      responses:
+        '200':
+          description: A list of order resources.
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/ResourceList'
+    post:
+      operationId: createOrder
+      tags:
+      - Orders
+      summary: Create an order
+      requestBody:
+        required: true
+        content:
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/OrderData'
+      responses:
+        '201':
+          description: The created order resource.
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/OrderData'
+  /orders/{orderId}:
+    parameters:
+    - $ref: '#/components/parameters/ResourceId'
+    get:
+      operationId: getOrder
+      tags:
+      - Orders
+      summary: Retrieve an order
+      responses:
+        '200':
+          description: The requested order resource.
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/OrderData'
+    patch:
+      operationId: updateOrder
+      tags:
+      - Orders
+      summary: Update an order
+      description: Update order attributes or trigger order state transitions (e.g. _place, _approve, _cancel) by setting the corresponding trigger attribute to true.
+      requestBody:
+        required: true
+        content:
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/OrderData'
+      responses:
+        '200':
+          description: The updated order resource.
+    delete:
+      operationId: deleteOrder
+      tags:
+      - Orders
+      summary: Delete an order
+      responses:
+        '204':
+          description: The order was deleted.
+components:
+  schemas:
+    ResourceList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Resource'
+        meta:
+          $ref: '#/components/schemas/Meta'
+        links:
+          type: object
+    OrderData:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Order'
+    Resource:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        attributes:
+          type: object
+        relationships:
+          type: object
+        links:
+          type: object
+    Order:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum:
+          - orders
+        attributes:
+          type: object
+          properties:
+            number:
+              type: integer
+            status:
+              type: string
+              enum:
+              - draft
+              - pending
+              - placed
+              - approved
+              - cancelled
+            payment_status:
+              type: string
+              enum:
+              - unpaid
+              - authorized
+              - paid
+              - voided
+              - refunded
+              - free
+              - partially_authorized
+              - partially_paid
+              - partially_refunded
+              - partially_voided
+            fulfillment_status:
+              type: string
+              enum:
+              - unfulfilled
+              - in_progress
+              - fulfilled
+              - not_required
+            currency_code:
+              type: string
+            total_amount_cents:
+              type: integer
+            customer_email:
+              type: string
+            language_code:
+              type: string
+            _place:
+              type: boolean
+              description: Trigger attribute to place the order.
+            _approve:
+              type: boolean
+              description: Trigger attribute to approve the order.
+            metadata:
+              type: object
+        relationships:
+          type: object
+    Meta:
+      type: object
+      properties:
+        record_count:
+          type: integer
+        page_count:
+          type: integer
+  parameters:
+    ResourceId:
+      name: id
+      in: path
+      required: true
+      description: The resource unique identifier.
+      schema:
+        type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'OAuth2 access token obtained from https://auth.commercelayer.io/oauth/token (client_credentials, password, authorization_code, refresh_token, or JWT bearer grant). Passed as Authorization: Bearer {access_token}. Tokens may carry a market or stock_location scope.'
