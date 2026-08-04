@@ -1,0 +1,36 @@
+{
+  "provider": "commercelayer",
+  "sources": [
+    "commercelayer-addresses-api-openapi.yml",
+    "commercelayer-customers-api-openapi.yml",
+    "commercelayer-line-items-api-openapi.yml",
+    "commercelayer-markets-api-openapi.yml",
+    "commercelayer-orders-api-openapi.yml",
+    "commercelayer-payment-methods-api-openapi.yml",
+    "commercelayer-prices-api-openapi.yml",
+    "commercelayer-promotions-api-openapi.yml",
+    "commercelayer-shipments-api-openapi.yml",
+    "commercelayer-skus-api-openapi.yml",
+    "commercelayer-stock-items-api-openapi.yml",
+    "commercelayer-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "commercelayer-addresses-api-openapi.yml",
+    "commercelayer-customers-api-openapi.yml",
+    "commercelayer-line-items-api-openapi.yml",
+    "commercelayer-markets-api-openapi.yml",
+    "commercelayer-orders-api-openapi.yml",
+    "commercelayer-payment-methods-api-openapi.yml",
+    "commercelayer-prices-api-openapi.yml",
+    "commercelayer-promotions-api-openapi.yml",
+    "commercelayer-shipments-api-openapi.yml",
+    "commercelayer-skus-api-openapi.yml",
+    "commercelayer-stock-items-api-openapi.yml",
+    "commercelayer-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
