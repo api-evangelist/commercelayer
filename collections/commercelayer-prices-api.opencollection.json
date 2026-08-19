@@ -1,0 +1,103 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Commerce Layer Core Addresses Prices API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Prices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all prices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.commercelayer.io/api/prices"
+          },
+          "docs": "List all prices"
+        },
+        {
+          "info": {
+            "name": "Create a price",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{organization}.commercelayer.io/api/prices"
+          },
+          "docs": "Create a price"
+        },
+        {
+          "info": {
+            "name": "Retrieve a price",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.commercelayer.io/api/prices/:priceId",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The resource unique identifier."
+              }
+            ]
+          },
+          "docs": "Retrieve a price"
+        },
+        {
+          "info": {
+            "name": "Update a price",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{organization}.commercelayer.io/api/prices/:priceId",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The resource unique identifier."
+              }
+            ]
+          },
+          "docs": "Update a price"
+        },
+        {
+          "info": {
+            "name": "Delete a price",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{organization}.commercelayer.io/api/prices/:priceId",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The resource unique identifier."
+              }
+            ]
+          },
+          "docs": "Delete a price"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

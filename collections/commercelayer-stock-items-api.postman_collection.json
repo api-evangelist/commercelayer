@@ -1,0 +1,503 @@
+{
+  "item": [
+    {
+      "id": "e71026a5-9970-4103-bd35-436527987171",
+      "name": "Stock Items",
+      "description": {
+        "content": "Stock quantities for a SKU at a given stock location.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a3b2cbec-f2e8-4c86-92d3-9af6391d368a",
+          "name": "List all stock items",
+          "request": {
+            "name": "List all stock items",
+            "description": {},
+            "url": {
+              "path": [
+                "stock_items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Commerce Layer organization subdomain (slug).",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f0d1d7ca-2c45-4f14-a64a-92d937612711",
+              "name": "A list of stock item resources.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stock_items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Commerce Layer organization subdomain (slug).",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"attributes\": {},\n      \"relationships\": {},\n      \"links\": {}\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"attributes\": {},\n      \"relationships\": {},\n      \"links\": {}\n    }\n  ],\n  \"meta\": {\n    \"record_count\": 4343,\n    \"page_count\": 2826\n  },\n  \"links\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "344dcf20-66df-4ee9-8362-eac8bf4acb25",
+          "name": "Create a stock item",
+          "request": {
+            "name": "Create a stock item",
+            "description": {},
+            "url": {
+              "path": [
+                "stock_items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Commerce Layer organization subdomain (slug).",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f5dbfc27-e021-4dcd-ad4a-7be3573a3207",
+              "name": "The created stock item resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stock_items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Commerce Layer organization subdomain (slug).",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7d121706-fad5-439b-93d7-8cfd7bbe2068",
+          "name": "Retrieve a stock item",
+          "request": {
+            "name": "Retrieve a stock item",
+            "description": {},
+            "url": {
+              "path": [
+                "stock_items",
+                ":stockItemId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The resource unique identifier."
+                },
+                {
+                  "description": "Your Commerce Layer organization subdomain (slug).",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a60cf379-dad5-4b6a-9762-1d5d841dc607",
+              "name": "The requested stock item resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stock_items",
+                    ":stockItemId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The resource unique identifier."
+                    },
+                    {
+                      "description": "Your Commerce Layer organization subdomain (slug).",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4717ffae-42d9-497e-b373-8f95e0d1bd98",
+          "name": "Update a stock item",
+          "request": {
+            "name": "Update a stock item",
+            "description": {},
+            "url": {
+              "path": [
+                "stock_items",
+                ":stockItemId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The resource unique identifier."
+                },
+                {
+                  "description": "Your Commerce Layer organization subdomain (slug).",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ebdc91d0-5801-4c11-ab00-1f8496d9a298",
+              "name": "The updated stock item resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stock_items",
+                    ":stockItemId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The resource unique identifier."
+                    },
+                    {
+                      "description": "Your Commerce Layer organization subdomain (slug).",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "214081a5-a48d-40a4-998f-4f5cdb13ab55",
+          "name": "Delete a stock item",
+          "request": {
+            "name": "Delete a stock item",
+            "description": {},
+            "url": {
+              "path": [
+                "stock_items",
+                ":stockItemId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The resource unique identifier."
+                },
+                {
+                  "description": "Your Commerce Layer organization subdomain (slug).",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0a4466d0-5794-4368-b903-9b1883385e4d",
+              "name": "The stock item was deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stock_items",
+                    ":stockItemId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The resource unique identifier."
+                    },
+                    {
+                      "description": "Your Commerce Layer organization subdomain (slug).",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Commerce Layer organization subdomain (slug).",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "yourdomain",
+      "key": "organization"
+    },
+    {
+      "type": "string",
+      "value": "https://{{organization}}.commercelayer.io/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "646cb0e8-b25f-42a0-b9f9-7cbc3dfa0c05",
+    "name": "Commerce Layer Core Addresses Stock Items API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Commerce Layer is a headless, composable commerce platform. The Core API is 100% compliant with the JSON:API specification (v1.0) and supports compound documents, sparse fieldsets, resource linking, filtering, sorting, and pagination. All requests are authenticated with an OAuth2 Bearer access token obtained from https://auth.commercelayer.io/oauth/token, and access tokens may be scoped to a market or stock location. Resources are served under the organization subdomain at https://{organization}.commercelayer.io/api using the application/vnd.api+json content type.\n\nContact Support:\n Name: Commerce Layer Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Commerce Layer Core Addresses SKUs API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SKUs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all SKUs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.commercelayer.io/api/skus",
+            "params": [
+              {
+                "name": "page[number]",
+                "value": "",
+                "type": "query",
+                "description": "The page of results to return (JSON:API pagination)."
+              },
+              {
+                "name": "page[size]",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page (max 25, up to 25 by default)."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to sort by; prefix with - for descending."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of relationships to side-load (compound documents)."
+              }
+            ]
+          },
+          "docs": "List all SKUs"
+        },
+        {
+          "info": {
+            "name": "Create a SKU",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{organization}.commercelayer.io/api/skus",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a SKU"
+        },
+        {
+          "info": {
+            "name": "Retrieve a SKU",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.commercelayer.io/api/skus/:skuId",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The resource unique identifier."
+              }
+            ]
+          },
+          "docs": "Retrieve a SKU"
+        },
+        {
+          "info": {
+            "name": "Update a SKU",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{organization}.commercelayer.io/api/skus/:skuId",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The resource unique identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a SKU"
+        },
+        {
+          "info": {
+            "name": "Delete a SKU",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{organization}.commercelayer.io/api/skus/:skuId",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The resource unique identifier."
+              }
+            ]
+          },
+          "docs": "Delete a SKU"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

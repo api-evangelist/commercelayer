@@ -1,0 +1,103 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Commerce Layer Core Addresses Payment Methods API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payment Methods",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all payment methods",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.commercelayer.io/api/payment_methods"
+          },
+          "docs": "List all payment methods"
+        },
+        {
+          "info": {
+            "name": "Create a payment method",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{organization}.commercelayer.io/api/payment_methods"
+          },
+          "docs": "Create a payment method"
+        },
+        {
+          "info": {
+            "name": "Retrieve a payment method",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.commercelayer.io/api/payment_methods/:paymentMethodId",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The resource unique identifier."
+              }
+            ]
+          },
+          "docs": "Retrieve a payment method"
+        },
+        {
+          "info": {
+            "name": "Update a payment method",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{organization}.commercelayer.io/api/payment_methods/:paymentMethodId",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The resource unique identifier."
+              }
+            ]
+          },
+          "docs": "Update a payment method"
+        },
+        {
+          "info": {
+            "name": "Delete a payment method",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{organization}.commercelayer.io/api/payment_methods/:paymentMethodId",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The resource unique identifier."
+              }
+            ]
+          },
+          "docs": "Delete a payment method"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

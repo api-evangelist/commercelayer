@@ -1,0 +1,73 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Commerce Layer Core Addresses Shipments API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Shipments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all shipments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.commercelayer.io/api/shipments"
+          },
+          "docs": "List all shipments"
+        },
+        {
+          "info": {
+            "name": "Retrieve a shipment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.commercelayer.io/api/shipments/:shipmentId",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The resource unique identifier."
+              }
+            ]
+          },
+          "docs": "Retrieve a shipment"
+        },
+        {
+          "info": {
+            "name": "Update a shipment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{organization}.commercelayer.io/api/shipments/:shipmentId",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The resource unique identifier."
+              }
+            ]
+          },
+          "docs": "Update shipment attributes or trigger shipment state transitions (e.g. _ship, _deliver) by setting the corresponding trigger attribute."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,537 @@
+{
+  "item": [
+    {
+      "id": "e69f1d9d-7bc8-4d3b-b6ab-7721179beb64",
+      "name": "Webhooks",
+      "description": {
+        "content": "Event subscriptions delivering signed callbacks.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0403f61d-040a-40af-8010-8146fa279f6c",
+          "name": "List all webhooks",
+          "request": {
+            "name": "List all webhooks",
+            "description": {},
+            "url": {
+              "path": [
+                "webhooks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Commerce Layer organization subdomain (slug).",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "04b3be40-807f-4ea8-a5b1-28b31b80a671",
+              "name": "A list of webhook resources.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Commerce Layer organization subdomain (slug).",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"attributes\": {},\n      \"relationships\": {},\n      \"links\": {}\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"attributes\": {},\n      \"relationships\": {},\n      \"links\": {}\n    }\n  ],\n  \"meta\": {\n    \"record_count\": 1033,\n    \"page_count\": 6924\n  },\n  \"links\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "54597e3a-8bc9-49d8-b176-88537439ea6f",
+          "name": "Create a webhook",
+          "request": {
+            "name": "Create a webhook",
+            "description": {
+              "content": "Subscribe to an event topic. Each time the subscribed event occurs, Commerce Layer triggers a POST request to the callback_url; the topic is sent in the X-CommerceLayer-Topic header.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "webhooks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Commerce Layer organization subdomain (slug).",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.api+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"type\": \"<string>\",\n    \"attributes\": {\n      \"name\": \"<string>\",\n      \"topic\": \"<string>\",\n      \"callback_url\": \"<string>\",\n      \"include_resources\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"circuit_state\": \"<string>\",\n      \"circuit_failure_count\": \"<integer>\",\n      \"shared_secret\": \"<string>\",\n      \"metadata\": \"<object>\"\n    },\n    \"relationships\": \"<object>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5ea65e06-e5a4-4e34-b81c-9d06a832a530",
+              "name": "The created webhook resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Commerce Layer organization subdomain (slug).",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"type\": \"<string>\",\n    \"attributes\": {\n      \"name\": \"<string>\",\n      \"topic\": \"<string>\",\n      \"callback_url\": \"<string>\",\n      \"include_resources\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"circuit_state\": \"<string>\",\n      \"circuit_failure_count\": \"<integer>\",\n      \"shared_secret\": \"<string>\",\n      \"metadata\": \"<object>\"\n    },\n    \"relationships\": \"<object>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"<string>\",\n    \"type\": \"<string>\",\n    \"attributes\": {\n      \"name\": \"<string>\",\n      \"topic\": \"<string>\",\n      \"callback_url\": \"<string>\",\n      \"include_resources\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"circuit_state\": \"<string>\",\n      \"circuit_failure_count\": \"<integer>\",\n      \"shared_secret\": \"<string>\",\n      \"metadata\": \"<object>\"\n    },\n    \"relationships\": \"<object>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5e455875-26ab-40d8-a7c1-40d71c3eaa28",
+          "name": "Retrieve a webhook",
+          "request": {
+            "name": "Retrieve a webhook",
+            "description": {},
+            "url": {
+              "path": [
+                "webhooks",
+                ":webhookId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The resource unique identifier."
+                },
+                {
+                  "description": "Your Commerce Layer organization subdomain (slug).",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "afaa60c1-207a-494a-b51b-51850301fdb1",
+              "name": "The requested webhook resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":webhookId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The resource unique identifier."
+                    },
+                    {
+                      "description": "Your Commerce Layer organization subdomain (slug).",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "edb7077e-ac4a-4738-a31e-263166f54e4b",
+          "name": "Update a webhook",
+          "request": {
+            "name": "Update a webhook",
+            "description": {},
+            "url": {
+              "path": [
+                "webhooks",
+                ":webhookId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The resource unique identifier."
+                },
+                {
+                  "description": "Your Commerce Layer organization subdomain (slug).",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b8e03662-9fae-4de7-b658-afa6e9ca965c",
+              "name": "The updated webhook resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":webhookId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The resource unique identifier."
+                    },
+                    {
+                      "description": "Your Commerce Layer organization subdomain (slug).",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f4117142-450c-49d1-899e-fc94461e851d",
+          "name": "Delete a webhook",
+          "request": {
+            "name": "Delete a webhook",
+            "description": {},
+            "url": {
+              "path": [
+                "webhooks",
+                ":webhookId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The resource unique identifier."
+                },
+                {
+                  "description": "Your Commerce Layer organization subdomain (slug).",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1c49334a-f33f-4557-acba-8a6621ef6e3b",
+              "name": "The webhook was deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":webhookId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The resource unique identifier."
+                    },
+                    {
+                      "description": "Your Commerce Layer organization subdomain (slug).",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Commerce Layer organization subdomain (slug).",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "yourdomain",
+      "key": "organization"
+    },
+    {
+      "type": "string",
+      "value": "https://{{organization}}.commercelayer.io/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "df712d01-a15b-481a-814d-dd0b244e5dce",
+    "name": "Commerce Layer Core Addresses Webhooks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Commerce Layer is a headless, composable commerce platform. The Core API is 100% compliant with the JSON:API specification (v1.0) and supports compound documents, sparse fieldsets, resource linking, filtering, sorting, and pagination. All requests are authenticated with an OAuth2 Bearer access token obtained from https://auth.commercelayer.io/oauth/token, and access tokens may be scoped to a market or stock location. Resources are served under the organization subdomain at https://{organization}.commercelayer.io/api using the application/vnd.api+json content type.\n\nContact Support:\n Name: Commerce Layer Support",
+      "type": "text/plain"
+    }
+  }
+}

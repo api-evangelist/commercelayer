@@ -1,0 +1,503 @@
+{
+  "item": [
+    {
+      "id": "2ca8d2d6-aa1e-4cfe-bbd4-25bbcbd7c9c5",
+      "name": "Prices",
+      "description": {
+        "content": "Prices belonging to price lists, associated with SKUs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6f60cf6e-d358-43a5-a7bd-ef26185a3ce8",
+          "name": "List all prices",
+          "request": {
+            "name": "List all prices",
+            "description": {},
+            "url": {
+              "path": [
+                "prices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Commerce Layer organization subdomain (slug).",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d7cff055-4cf2-4fe1-a12f-33c3ceec60ee",
+              "name": "A list of price resources.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "prices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Commerce Layer organization subdomain (slug).",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"attributes\": {},\n      \"relationships\": {},\n      \"links\": {}\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"attributes\": {},\n      \"relationships\": {},\n      \"links\": {}\n    }\n  ],\n  \"meta\": {\n    \"record_count\": 8953,\n    \"page_count\": 7637\n  },\n  \"links\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c68c8dff-1eed-425f-b454-09f046e47b87",
+          "name": "Create a price",
+          "request": {
+            "name": "Create a price",
+            "description": {},
+            "url": {
+              "path": [
+                "prices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Commerce Layer organization subdomain (slug).",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b2e8863c-401f-4103-b152-cd8c1cfc1c04",
+              "name": "The created price resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "prices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Commerce Layer organization subdomain (slug).",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fa7794ea-b976-4245-8c1e-433303bf57a4",
+          "name": "Retrieve a price",
+          "request": {
+            "name": "Retrieve a price",
+            "description": {},
+            "url": {
+              "path": [
+                "prices",
+                ":priceId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The resource unique identifier."
+                },
+                {
+                  "description": "Your Commerce Layer organization subdomain (slug).",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1c8f8152-96c2-40db-aee1-a0cb3a2831e4",
+              "name": "The requested price resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "prices",
+                    ":priceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The resource unique identifier."
+                    },
+                    {
+                      "description": "Your Commerce Layer organization subdomain (slug).",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "048b735a-37dc-4c41-a1ee-8c9fff695bf5",
+          "name": "Update a price",
+          "request": {
+            "name": "Update a price",
+            "description": {},
+            "url": {
+              "path": [
+                "prices",
+                ":priceId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The resource unique identifier."
+                },
+                {
+                  "description": "Your Commerce Layer organization subdomain (slug).",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f9a24383-3436-4e03-a6dc-d1907a5b31f7",
+              "name": "The updated price resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "prices",
+                    ":priceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The resource unique identifier."
+                    },
+                    {
+                      "description": "Your Commerce Layer organization subdomain (slug).",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "305a479a-0ba8-4132-9381-eb989c2af95f",
+          "name": "Delete a price",
+          "request": {
+            "name": "Delete a price",
+            "description": {},
+            "url": {
+              "path": [
+                "prices",
+                ":priceId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The resource unique identifier."
+                },
+                {
+                  "description": "Your Commerce Layer organization subdomain (slug).",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3231f8b8-ff84-42a3-a99b-b85594abd9bc",
+              "name": "The price was deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "prices",
+                    ":priceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The resource unique identifier."
+                    },
+                    {
+                      "description": "Your Commerce Layer organization subdomain (slug).",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Commerce Layer organization subdomain (slug).",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "yourdomain",
+      "key": "organization"
+    },
+    {
+      "type": "string",
+      "value": "https://{{organization}}.commercelayer.io/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6d82d95c-e7a1-40dd-abf4-fa60e261865b",
+    "name": "Commerce Layer Core Addresses Prices API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Commerce Layer is a headless, composable commerce platform. The Core API is 100% compliant with the JSON:API specification (v1.0) and supports compound documents, sparse fieldsets, resource linking, filtering, sorting, and pagination. All requests are authenticated with an OAuth2 Bearer access token obtained from https://auth.commercelayer.io/oauth/token, and access tokens may be scoped to a market or stock location. Resources are served under the organization subdomain at https://{organization}.commercelayer.io/api using the application/vnd.api+json content type.\n\nContact Support:\n Name: Commerce Layer Support",
+      "type": "text/plain"
+    }
+  }
+}

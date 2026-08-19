@@ -1,0 +1,103 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Commerce Layer Core Addresses Line Items API",
+    "version": "4.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Line Items",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all line items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.commercelayer.io/api/line_items"
+          },
+          "docs": "List all line items"
+        },
+        {
+          "info": {
+            "name": "Create a line item",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{organization}.commercelayer.io/api/line_items"
+          },
+          "docs": "Create a line item"
+        },
+        {
+          "info": {
+            "name": "Retrieve a line item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{organization}.commercelayer.io/api/line_items/:lineItemId",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The resource unique identifier."
+              }
+            ]
+          },
+          "docs": "Retrieve a line item"
+        },
+        {
+          "info": {
+            "name": "Update a line item",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{organization}.commercelayer.io/api/line_items/:lineItemId",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The resource unique identifier."
+              }
+            ]
+          },
+          "docs": "Update a line item"
+        },
+        {
+          "info": {
+            "name": "Delete a line item",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{organization}.commercelayer.io/api/line_items/:lineItemId",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The resource unique identifier."
+              }
+            ]
+          },
+          "docs": "Delete a line item"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,503 @@
+{
+  "item": [
+    {
+      "id": "ff4dd8e5-f41e-4eab-a935-eaea20f82c76",
+      "name": "Addresses",
+      "description": {
+        "content": "Billing and shipping addresses.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "af13e3fd-e3de-4f51-9642-91722bd0ba81",
+          "name": "List all addresses",
+          "request": {
+            "name": "List all addresses",
+            "description": {},
+            "url": {
+              "path": [
+                "addresses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Commerce Layer organization subdomain (slug).",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a760141e-0cee-459a-a0f0-5a02f69a2b09",
+              "name": "A list of address resources.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "addresses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Commerce Layer organization subdomain (slug).",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"attributes\": {},\n      \"relationships\": {},\n      \"links\": {}\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"attributes\": {},\n      \"relationships\": {},\n      \"links\": {}\n    }\n  ],\n  \"meta\": {\n    \"record_count\": 544,\n    \"page_count\": 7190\n  },\n  \"links\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f8e487bd-0f6b-42b8-996e-1626f7878bab",
+          "name": "Create an address",
+          "request": {
+            "name": "Create an address",
+            "description": {},
+            "url": {
+              "path": [
+                "addresses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Commerce Layer organization subdomain (slug).",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d40998f9-0386-438d-8535-dc7417a63d94",
+              "name": "The created address resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "addresses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Commerce Layer organization subdomain (slug).",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4fa4bf3c-50c1-45ba-8aa1-94495311c661",
+          "name": "Retrieve an address",
+          "request": {
+            "name": "Retrieve an address",
+            "description": {},
+            "url": {
+              "path": [
+                "addresses",
+                ":addressId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The resource unique identifier."
+                },
+                {
+                  "description": "Your Commerce Layer organization subdomain (slug).",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c757e49a-2563-42ec-ace6-155415057c31",
+              "name": "The requested address resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "addresses",
+                    ":addressId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The resource unique identifier."
+                    },
+                    {
+                      "description": "Your Commerce Layer organization subdomain (slug).",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eaf6a0bb-be79-4627-aa97-4f65169cba57",
+          "name": "Update an address",
+          "request": {
+            "name": "Update an address",
+            "description": {},
+            "url": {
+              "path": [
+                "addresses",
+                ":addressId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The resource unique identifier."
+                },
+                {
+                  "description": "Your Commerce Layer organization subdomain (slug).",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "90559108-2a10-4334-9840-a67dc391ecba",
+              "name": "The updated address resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "addresses",
+                    ":addressId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The resource unique identifier."
+                    },
+                    {
+                      "description": "Your Commerce Layer organization subdomain (slug).",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "48a6736d-22b8-474a-9c2f-9d8b04774131",
+          "name": "Delete an address",
+          "request": {
+            "name": "Delete an address",
+            "description": {},
+            "url": {
+              "path": [
+                "addresses",
+                ":addressId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The resource unique identifier."
+                },
+                {
+                  "description": "Your Commerce Layer organization subdomain (slug).",
+                  "type": "any",
+                  "value": "{{organization}}",
+                  "key": "organization"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e6d134f2-2c54-4dda-9376-1799a94b4324",
+              "name": "The address was deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "addresses",
+                    ":addressId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The resource unique identifier."
+                    },
+                    {
+                      "description": "Your Commerce Layer organization subdomain (slug).",
+                      "type": "any",
+                      "value": "{{organization}}",
+                      "key": "organization"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Commerce Layer organization subdomain (slug).",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "yourdomain",
+      "key": "organization"
+    },
+    {
+      "type": "string",
+      "value": "https://{{organization}}.commercelayer.io/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c8f8eaa8-ba1c-4d08-a7bf-3a3a7c0b2a65",
+    "name": "Commerce Layer Core Addresses API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Commerce Layer is a headless, composable commerce platform. The Core API is 100% compliant with the JSON:API specification (v1.0) and supports compound documents, sparse fieldsets, resource linking, filtering, sorting, and pagination. All requests are authenticated with an OAuth2 Bearer access token obtained from https://auth.commercelayer.io/oauth/token, and access tokens may be scoped to a market or stock location. Resources are served under the organization subdomain at https://{organization}.commercelayer.io/api using the application/vnd.api+json content type.\n\nContact Support:\n Name: Commerce Layer Support",
+      "type": "text/plain"
+    }
+  }
+}
