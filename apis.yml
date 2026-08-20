@@ -25,6 +25,13 @@ tags:
 - Commerce
 - Headless
 - Composable
+- E-Commerce
+- JSON:API
+- Order
+tags_raw:
+- Commerce
+- Headless
+- Composable
 - eCommerce
 - JSON:API
 - Orders
@@ -110,6 +117,8 @@ apis:
   humanURL: https://docs.commercelayer.io/core/api-reference
   baseURL: https://yourdomain.commercelayer.io/api
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
@@ -236,6 +245,8 @@ apis:
   humanURL: https://docs.commercelayer.io/core/api-reference
   baseURL: https://yourdomain.commercelayer.io/api
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
